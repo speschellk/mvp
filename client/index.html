@@ -4,16 +4,19 @@
     <meta charset="utf-8" />
     <title>Cocktail Menu</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC" rel="stylesheet">
   </head>
   <body>
-    <h1>Cocktail Menu</h1>
-    <h2>Find all the drinks!</h2>
-    <!-- Nav bar? -->
-    <!-- form thing --> <!-- or make a separate template for each thing I'm going to do-->
-    <form class='ingredients'>
-      <input type='text' value='ingredient' placeholder='Ingredient'>
-      <button type='submit'>Search</button>
-    </form>
+    <div class='headings'>
+      <h1>~ Cocktails ~</h1>
+      <h2>What do you like?</h2>
+      <!-- Nav bar? -->
+      <!-- form thing --> <!-- or make a separate template for each thing I'm going to do-->
+      <form class='ingredients'>
+        <input type='text' placeholder='Ingredient'>
+        <button type='submit'>Search</button>
+      </form>
+    </div>
 
     <!-- Where the app will sit -->
     <div ng-view></div>
