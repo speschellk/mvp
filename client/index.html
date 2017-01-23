@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='cocktail-menu'>
   <head>
     <meta charset="utf-8" />
     <title>Cocktail Menu</title>
@@ -7,12 +7,22 @@
   </head>
   <body>
     <h1>Cocktail Menu</h1>
-    <h2>Find all the drinks</h2>
+    <h2>Find all the drinks!</h2>
     <!-- Nav bar? -->
     <!-- form thing --> <!-- or make a separate template for each thing I'm going to do-->
+    <form class='ingredients'>
+      <input type='text' value='ingredient' placeholder='Ingredient'>
+      <button type='submit'>Search</button>
+    </form>
 
     <!-- Where the app will sit -->
-    <div></div>
+    <div ng-view></div>
+
+    <hr/>
+
+    <pre>
+      Hello world
+    </pre>
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
