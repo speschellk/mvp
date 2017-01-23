@@ -17,28 +17,28 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Cocktail Menu
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Find delectable cocktail recipes that use the ingredients you already have.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Cocktail Menu lets you search for delicious recipes that use the ingredients you already have on hand. Pull up options, browse the recipes, and get to pouring.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > Cocktails are flavorful, creative, and full of personality. But like complex meals, they often require dozens of ingredients, many of which are perishable. If you don't have a fully stocked bar and fridge, you may have to make an expensive run to the store or find yourself making the same simple recipe over and over again.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Cocktail Menu dynamically generates lists of recipes you can make using the ingredients you have. Given a base liquor, liquer, or even a garnish you want to build around, it will conjure up available recipes so you can spend more time pouring and less time searching.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > I used to use recipe books and other apps to search for cocktail recipes, but it's like looking through an elaborate cookbook: there was always at least one ingredient I didn't have on hand. I wanted Cocktail Menu to make the recipes respond to the ingredients, without taking away the creativity and choice of making and drinking cocktails.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Just enter an ingredient on the homepage! Cocktail Menu will automatically search for recipes using that ingredient. Click on recipes you'd like to explore more, and save recipes you loved so much you want to make again.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > I love to make drinks for my friends, and I don't want to serve them the same thing all the time, but I also don't have the most extensive bar you've ever seen. Cocktail Menu has made it really easy to find a variety of cocktails I can whip up without having to make an expensive liquor store run.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > Ready for a delicious drink? Try it out!
