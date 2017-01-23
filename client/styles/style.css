@@ -1,9 +1,9 @@
 body {
   margin: 0;
   margin-top: 10px;
-  font-family: 'IM Fell DW Pica SC', serif;
-  font-size: 30px;
-  background-color: #F2E6B6; 
+  background-color: #EBE5D1; 
+  font: 30px 'IM Fell DW Pica SC', serif;
+  color: #1C1C1B;
 }
 
 .headings {
@@ -11,32 +11,29 @@ body {
   height: 100%;
   margin: 10px;
   text-align: center;
+  color: #1C1C1B;
 }
 
 h2 {
   font-size: 30px;
 }
 
-input {
+input, button {
   height: 30px;
   width: 500px;
+  padding: 5px 20px 5px 20px;
+  margin-bottom: 10px;
   vertical-align: center;
+  background-color: #FCFBF5;
   border: 2px dotted #4d4d4d;
   border-radius: 4px;
-  background-color: #F0ECDF;
-  font-family: 'IM Fell DW Pica SC', serif;
-  font-size: 20px;
+  font: 20px 'IM Fell DW Pica SC', serif;
+  color: #4d4d4d;
 }
 
 button {
-  height: 30px;
   width: 100px;
   padding: 2px;
-  border: 2px dotted #4d4d4d;
-  border-radius: 3px;
-  background-color: #F0ECDF;
-  font-family: 'IM Fell DW Pica SC', serif;
   font-size: 18px;
-  font-color: #61605E;
 }
 
