@@ -1,23 +1,30 @@
-angular.module('cocktail-menu', [])
+// find the module 'cocktail'
+angular.module('cocktail', [])
 
-.controller('DrinksController', function ($scope, $http) {
-  $scope.$watch('search', function() {
-    fetch();
+// make a controller on it
+  .controller('DrinksController', function($scope, $http) {
+    $scope.search = 'Vodka';
+    // console.log('inside controller')
+    $scope.$watch('search', function() {
+      fetch($scope, $http);
+    });
   });
 
-  $scope.search = 'Vodka';
+function fetch($scope, $http) {
+  // console.log('calling fetch function')
+  $http({
+    method: 'GET',
+    url: 'http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + $scope.search
+  })
+  .then(function(res) {
+    console.log('data is', res.data.drinks[0].strDrink);
+    $scope.drinks = res.data.drinks[0].strDrink;
 
-  function fetch() {
-    $http.get('http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + $scope.search)
-    .then(function(res) {
-      console.log('res is', res);
-      console.log('data is', res.data);
-      $scope.drinks = res.data;
-    })
-    .catch(function(err) {
-      console.log('Error fetching drinks', err);
-    });
-  }
+  })
+  .catch(function(err) {
+    console.log('Spilled your drink!', err);
+  });
+}
 
   // var initializeDrinks = function () {
   //   Drinks.getAll()
@@ -30,4 +37,4 @@ angular.module('cocktail-menu', [])
   // };
 
   // initializeDrinks();
-});
+// });

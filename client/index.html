@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html ng-app='cocktail-menu'>
+<!-- will go seek the module called 'cocktail' -->
+<html ng-app='cocktail'>
   <head>
     <meta charset="utf-8" />
     <title>Cocktail Menu</title>
@@ -7,28 +8,30 @@
     <link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC" rel="stylesheet">
   </head>
   <body>
-    <div class='headings'>
-      <h1>~ Cocktails ~</h1>
-      <h2>What do you like?</h2>
-      <!-- Nav bar? -->
-      <!-- form thing --> <!-- or make a separate template for each thing I'm going to do-->
+    <div class='headings' ng-init='drinks = []'>
+      <h1>~ cocktails ~</h1>
+      <h2>what do you like?</h2>
       <form class='ingredients'>
-        <input type='text' ng-model='search' placeholder='Ingredient'><br>
-        <button type='submit'>Search</button>
+        <input type='text' ng-model='search' ng-model-options='{ debounce: 800 }'' placeholder='ingredient'>
+        <!-- <button type='submit' ng-click='submitIngredient'>Search</button> -->
       </form>
     </div>
 
-    <!-- Where the app will sit -->
-    <div ng-view></div>
+    <!-- Tells Angular what bit of code is in control of this div -->
+    <div class='drinkList' ng-controller='DrinksController'>
+      {{ drinks }}
+    </div>
 
-    <hr/>
+    <!-- <hr/>
 
     <pre>
-      Hello world
-    </pre>
+      {{ drinks }}
+    </pre> -->
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+    <!-- add script tag for all controllers -->
     <script src="app/app.js"></script>
+    <script src='app/drinks/drinks.js'></script>
   </body>
 </html>
