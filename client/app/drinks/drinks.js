@@ -6,8 +6,9 @@ angular.module('cocktail', [])
     $scope.$watch('search', function() {
       if ($scope.search === '') {
         $scope.drinks = [];
+      } else {
+        fetchByIngredient($scope, $http);
       }
-      fetchByIngredient($scope, $http);
     });
     $scope.$watch('search2', function() {
       console.log('search2 is', $scope.search2);
