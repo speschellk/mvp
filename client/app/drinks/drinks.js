@@ -7,6 +7,9 @@ angular.module('cocktail', [])
       if ($scope.search === '') {
         $scope.drinks = [];
       } else {
+        if ($scope.drinks.length !== 0) {
+          $scope.drinks = [];  
+        }
         fetchByIngredient($scope, $http);
       }
     });
@@ -39,6 +42,7 @@ function fetchByIngredient($scope, $http) {
           ingredientResults.push(res.data.drinks[i]);
         }
       }
+      // getRecipes($scope, $http, ingredientResults);
       return ingredientResults;
     } else {
       console.log('There were no results for your search');
@@ -80,3 +84,22 @@ function filterByIngredient($scope, $http, ingredientResults) {
     console.log('Oops, we spilled your drink!', err);
   });
 }
+
+// function getRecipes($scope, $http, arr) {
+//   for (var i = 0; i < arr.length; i++) {
+//     $scope.id = arr[i].idDrink;
+//     console.log('id is', $scope.id);
+//     $http({
+//       method: 'GET',
+//       url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + $scope.id
+//     })
+//     .then(function(res) {
+//       console.log('recipe res is', res.data);
+//       $scope.drinks.push(res.data.drinks);
+//     })
+//     .catch(function(err) {
+//       console.log('Error finding recipe', err);
+//     });
+//   }
+//   return $scope.drinks;
+// }
