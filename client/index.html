@@ -12,14 +12,15 @@
       <h1>~ cocktails ~</h1>
       <h2>what do you have?</h2>
       <form class='ingredients'>
-        <input type='text' ng-model='search' ng-model-options='{ debounce: 800 }'' placeholder='enter a base liquor'><br>
-        <input type='text' ng-model='search2' ng-model-options='{ debounce: 800 }' placeholder='anything else?'>
+        <input type='text' ng-model='search' ng-model-options='{ debounce: 850 }'' placeholder='enter a base liquor'><br>
+        <input type='text' ng-model='search2' ng-model-options='{ debounce: 850 }' placeholder='anything else?'>
       </form>
     </div>
 
     <!-- Tells Angular what bit of code is in control of this div -->
     <div class='drinkList' ng-controller='DrinksController'>
-      <div class='drinkOption' ng-repeat='drink in drinks'>{{ drink.strDrink }}
+      <div class='drinkOption' ng-repeat='drink in drinks'>
+          <a ng-href='recipe'>{{ drink.strDrink }}</a>
           <img ng-src='{{ drink.strDrinkThumb }}'>
       </div>
     </div>
