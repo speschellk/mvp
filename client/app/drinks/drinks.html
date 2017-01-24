@@ -1,0 +1,7 @@
+<div class="drinks">
+  <div class="drink" ng-repeat="drink in data.drinks | filter:search | orderBy:'created_at'">
+    <div class="name">{{ drink.name }}</div>
+    <!-- think about what else display -->
+    <div class="recipe">{{ drink.recipe }}</div>
+  </div>
+</div>
