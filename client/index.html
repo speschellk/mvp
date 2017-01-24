@@ -10,23 +10,20 @@
   <body>
     <div class='headings' ng-init='drinks = []'>
       <h1>~ cocktails ~</h1>
-      <h2>what do you like?</h2>
+      <h2>what do you have?</h2>
       <form class='ingredients'>
-        <input type='text' ng-model='search' ng-model-options='{ debounce: 800 }'' placeholder='ingredient'>
-        <!-- <button type='submit' ng-click='submitIngredient'>Search</button> -->
+        <input type='text' ng-model='search' ng-model-options='{ debounce: 1000 }'' placeholder='enter an ingredient'>
       </form>
     </div>
 
     <!-- Tells Angular what bit of code is in control of this div -->
     <div class='drinkList' ng-controller='DrinksController'>
-      {{ drinks }}
+      <ul>
+        <li ng-repeat='drink in drinks'>{{ drink.strDrink }}
+          <img ng-src='{{ drink.strDrinkThumb }}' />
+        </li>
+      </ul>
     </div>
-
-    <!-- <hr/>
-
-    <pre>
-      {{ drinks }}
-    </pre> -->
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
