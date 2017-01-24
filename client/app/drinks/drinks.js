@@ -15,4 +15,4 @@ angular.module('cocktail-menu.drinks', [])
   };
 
   initializeDrinks();
-  });
+});
