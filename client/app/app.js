@@ -7,8 +7,5 @@ angular.module('cocktail-menu', [
     .when('/', {
       templateUrl: './index.html',
       controller: 'AuthController'
-    })
-    .otherwise({
-      redirectTo: '/'
     });
 });
