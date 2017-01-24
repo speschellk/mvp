@@ -58,14 +58,14 @@ a {
   color: #4d4d4d
 }
 
-a:visited {
-    color: #995c00;
+/*a ng-click:visited {
+  color: #995c00;
 }
 
-a:hover {
-    color: #995c00;
-    text-shadow: 1px;
-}
+a ng-click:hover {
+  color: #995c00;
+  text-shadow: 1px;
+}*/
 
 img {
   height: 90px;

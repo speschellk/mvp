@@ -22,6 +22,29 @@ angular.module('cocktail', [])
         fetchByIngredient($scope, $http);
       }
     });
+    $scope.recipe = function() {
+      $scope.drinkId = this.drink.idDrink;
+
+      $http({
+        method: 'GET',
+        url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + $scope.drinkId
+      })
+      .then(function(res) {
+        console.log('res is', res.data.drinks[0]);
+        // str.Drink = name
+        // str.DrinkThumb = pic
+        // strGlass = glass
+        // strIngredient1 = ingredient
+        // strMeasure1 = amount of ing. 1
+        // strIngredient2 = ingredient2
+        // strMeasure2 = amoutn of ing. 2
+        // etc.
+        // strInstructions = how to mix
+      })
+      .catch(function(err) {
+        console.log('There was an error finding your recipe', err);
+      });
+    };
   });
 
 function fetchByIngredient($scope, $http) {

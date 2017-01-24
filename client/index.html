@@ -20,8 +20,8 @@
     <!-- Tells Angular what bit of code is in control of this div -->
     <div class='drinkList' ng-controller='DrinksController'>
       <div class='drinkOption' ng-repeat='drink in drinks'>
-          <a ng-href='recipe'>{{ drink.strDrink }}</a>
-          <img ng-src='{{ drink.strDrinkThumb }}'>
+        <a href ng-click='recipe()'>{{ drink.strDrink }}</a>
+        <img ng-src='{{ drink.strDrinkThumb }}'>
       </div>
     </div>
 
