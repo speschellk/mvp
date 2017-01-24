@@ -3,8 +3,13 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-// connect to database
-mongoose.connect('mongodb://localhost/cocktail-menu');
+// // test of GET response
+// app.get('/', function (req, res) {
+//   res.send('hello world');
+// });
+
+// // connect to database
+// mongoose.connect('mongodb://localhost/cocktail-menu');
 
 // configure server with middleware and routes
 // require('./config/middleware.js')(app, express);
