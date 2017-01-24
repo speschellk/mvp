@@ -18,11 +18,14 @@
 
     <!-- Tells Angular what bit of code is in control of this div -->
     <div class='drinkList' ng-controller='DrinksController'>
-      <ul>
+      <div class='drinkOption' ng-repeat='drink in drinks'>{{ drink.strDrink }}
+          <img ng-src='{{ drink.strDrinkThumb }}'>
+      </div>
+<!--       <ul>
         <li ng-repeat='drink in drinks'>{{ drink.strDrink }}
           <img ng-src='{{ drink.strDrinkThumb }}' />
         </li>
-      </ul>
+      </ul> -->
     </div>
 
     <script src="lib/angular/angular.js"></script>

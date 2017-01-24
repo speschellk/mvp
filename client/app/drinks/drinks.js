@@ -14,6 +14,7 @@ function fetch($scope, $http) {
     url: 'http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + $scope.search
   })
   .then(function(res) {
+    console.log(res.data.drinks);
     $scope.drinks = res.data.drinks;
 
   })
