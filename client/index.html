@@ -19,11 +19,14 @@
 
     <!-- Tells Angular what bit of code is in control of this div -->
     <div class='drinkList' ng-controller='DrinksController'>
-      <div class='drinkOption animate-show-hide' ng-repeat='drink in drinks'>
+      <div class='drinkOption' ng-repeat='drink in drinks'>
         <a href ng-click='recipe()'>{{ drink.strDrink }}</a>
-        <img ng-src='{{ drink.strDrinkThumb }}'>
+        <span class='imgs'>
+          <img ng-src='{{ drink.strDrinkThumb }}'>
+        </span>
+        <br>
         <div class='recipe' ng-repeat='ingredient in ingredients'>
-          <li>{{ ingredient }}</li><br>
+          <li>{{ ingredient }}</li>
         </div>
       </div>
     </div>
