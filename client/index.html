@@ -16,6 +16,8 @@
         <input type='text' ng-model='search2' ng-model-options='{ debounce: 850 }' placeholder='anything else?'>
       </form>
     </div>
+    <br>
+    <br>
 
     <!-- Tells Angular what bit of code is in control of this div -->
     <div class='drinkList' ng-controller='DrinksController'>
@@ -24,6 +26,7 @@
         <span class='imgs'>
           <img ng-src='{{ drink.strDrinkThumb }}'>
         </span>
+        <br>
         <br>
         <div class='recipe' ng-repeat='ingredient in ingredients'>
           <li>{{ ingredient }}</li>
