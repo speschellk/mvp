@@ -1,58 +1,56 @@
-// find the module 'cocktail'
 angular.module('cocktail', [])
 
-// make a controller on it
   .controller('DrinksController', function($scope, $http) {
+    // responds to entries in base liquor text input field
     $scope.$watch('search', function() {
       if ($scope.search === '') {
-        $scope.drinks = [];
-        $scope.ingredients = [];
+        reset($scope);
       } else {
         if ($scope.drinks.length !== 0) {
-          $scope.drinks = [];
-          $scope.ingredients = [];  
+          reset($scope);
         }
-        fetchByIngredient($scope, $http);
+        fetch($scope, $http);
       }
     });
+
+    // responds to entries in second ingredient text input field
     $scope.$watch('search2', function() {
       if ($scope.search2 !== '') {
-        filterByIngredient($scope, $http);
+        filter($scope, $http);
       } else {
-        $scope.drinks = [];
-        $scope.ingredients = [];
-        fetchByIngredient($scope, $http);
+        reset($scope);
+        fetch($scope, $http);
       }
     });
+
+    // retrieves recipe for clicked drink
     $scope.recipe = function() {
       $scope.drinkId = this.drink.idDrink;
-
       $http({
         method: 'GET',
         url: 'http://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=' + $scope.drinkId
       })
       .then(function(res) {
-        console.log('res is', res.data.drinks[0]);
-        $scope.drinks = [];
-        $scope.drinks.push(res.data.drinks[0]);
+        var drinkData = res.data.drinks[0];
+        reset($scope);
+        $scope.drinks.push(drinkData);
 
-        $scope.ingredients = [];
-
-        if (res.data.drinks[0].strGlass !== 'vote') {
-          $scope.ingredients.push(res.data.drinks[0].strGlass);
+        // exclude anomalous glass type data
+        if (drinkData.strGlass !== 'vote') {
+          $scope.ingredients.push(drinkData.strGlass);
         }
 
+        // concatenate ingredients and their measurements for easy display
         for (var i = 0; i < 15; i++) {
-          var measurement = res.data.drinks[0]['strMeasure' + i];
-          var ingredient = res.data.drinks[0]['strIngredient' + i];
-
+          var measurement = drinkData['strMeasure' + i];
+          var ingredient = drinkData['strIngredient' + i];
           if (measurement !== '' && measurement !== undefined && ingredient !== '' && ingredient !== undefined) {
             $scope.ingredients.push(measurement + ' - ' + ingredient);
           }
         }
 
-        $scope.ingredients.push(res.data.drinks[0].strInstructions);
-        console.log('ingredients is', $scope.ingredients);
+        // add mixing instructions
+        $scope.ingredients.push(drinkData.strInstructions);
         return $scope.ingredients;
       })
       .catch(function(err) {
@@ -61,24 +59,26 @@ angular.module('cocktail', [])
     };
   });
 
-function fetchByIngredient($scope, $http) {
-  var ingredientResults = $scope.drinks;
-  $scope.ingredientResults = ingredientResults;
+// queries drinks API for drinks using first ingredient
+function fetch($scope, $http) {
+  var drinkOptions = $scope.drinks;
+  $scope.drinkOptions = drinkOptions;
 
   $http({
     method: 'GET',
     url: 'http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + $scope.search
   })
   .then(function(res) {
-    if (res.data.drinks !== null) {
+    var results = res.data.drinks;
+    if (results !== null) {
 
-      for (var i = 0; i < res.data.drinks.length; i++) {
-
-        if (res.data.drinks[i].strDrinkThumb !== null && !ingredientResults.includes(res.data.drinks[i])) {
-          ingredientResults.push(res.data.drinks[i]);
+      for (var i = 0; i < results.length; i++) {
+        // exclude results with no thumbnail or that are already in drink list
+        if (results[i].strDrinkThumb !== null && !drinkOptions.includes(results[i])) {
+          drinkOptions.push(results[i]);
         }
       }
-      return ingredientResults;
+      return drinkOptions;
     } else {
       console.log('There were no results for your search');
     }
@@ -88,33 +88,44 @@ function fetchByIngredient($scope, $http) {
   });
 }
 
-function filterByIngredient($scope, $http, ingredientResults) {
-  $scope.filterResults = [];
+// filters first ingredient results by second ingredient
+function filter($scope, $http, drinkOptions) {
+  $scope.filtered = [];
 
   $http({
     method: 'GET',
     url: 'http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + $scope.search2
   })
   .then(function(res) {
-    if (res.data.drinks !== null) {
-      for (var i = 0; i < res.data.drinks.length; i++) {
+    var results = res.data.drinks;
 
-        if (res.data.drinks[i].strDrinkThumb !== null) {
-          var id = res.data.drinks[i].idDrink;
+    if (results !== null) {
 
-          for (var j = 0; j < $scope.ingredientResults.length; j++) {
+      for (var i = 0; i < results.length; i++) {
+        // exclude resutls with no thumbnail
+        if (results[i].strDrinkThumb !== null) {
+          var id = results[i].idDrink;
 
-            if ($scope.ingredientResults[j].idDrink === id && !$scope.filterResults.includes(res.data.drinks[i])) {
-              $scope.filterResults.push(res.data.drinks[i]);
+          for (var j = 0; j < $scope.drinkOptions.length; j++) {
+
+            // adds result to list if it matches one in the first ingredient's drink list
+            if ($scope.drinkOptions[j].idDrink === id && !$scope.filtered.includes(results[i])) {
+              $scope.filtered.push(results[i]);
             }
           }
         }
       }
     }
-    $scope.drinks = $scope.filterResults;
+    $scope.drinks = $scope.filtered;
     return $scope.drinks;
   })
   .catch(function(err) {
     console.log('Oops, we spilled your drink!', err);
   });
+}
+
+// resets drinks and ingredients lists
+function reset($scope) {
+  $scope.drinks = [];
+  $scope.ingredients = [];
 }
