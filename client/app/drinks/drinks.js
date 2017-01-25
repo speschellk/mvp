@@ -6,9 +6,11 @@ angular.module('cocktail', [])
     $scope.$watch('search', function() {
       if ($scope.search === '') {
         $scope.drinks = [];
+        $scope.ingredients = [];
       } else {
         if ($scope.drinks.length !== 0) {
-          $scope.drinks = [];  
+          $scope.drinks = [];
+          $scope.ingredients = [];  
         }
         fetchByIngredient($scope, $http);
       }
@@ -18,6 +20,7 @@ angular.module('cocktail', [])
         filterByIngredient($scope, $http);
       } else {
         $scope.drinks = [];
+        $scope.ingredients = [];
         fetchByIngredient($scope, $http);
       }
     });
@@ -30,9 +33,14 @@ angular.module('cocktail', [])
       })
       .then(function(res) {
         console.log('res is', res.data.drinks[0]);
+        $scope.drinks = [];
+        $scope.drinks.push(res.data.drinks[0]);
+
         $scope.ingredients = [];
 
-        $scope.ingredients.push(res.data.drinks[0].strGlass);
+        if (res.data.drinks[0].strGlass !== 'vote') {
+          $scope.ingredients.push(res.data.drinks[0].strGlass);
+        }
 
         for (var i = 0; i < 15; i++) {
           var measurement = res.data.drinks[0]['strMeasure' + i];
