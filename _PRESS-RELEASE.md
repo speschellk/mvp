@@ -17,7 +17,7 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Cocktail Menu
+  > Cocktails
 
 ## Sub-Heading ##
   > Find delectable cocktail recipes that use the ingredients you already have.
