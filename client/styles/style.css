@@ -58,15 +58,6 @@ a {
   color: #4d4d4d
 }
 
-/*a ng-click:visited {
-  color: #995c00;
-}
-
-a ng-click:hover {
-  color: #995c00;
-  text-shadow: 1px;
-}*/
-
 img {
   height: 90px;
   width: 90px;
@@ -75,5 +66,9 @@ img {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+li {
+  list-style-type: none;
 }
 
